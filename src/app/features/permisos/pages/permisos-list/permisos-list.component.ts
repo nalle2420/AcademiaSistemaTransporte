@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Permiso } from '../../models/permiso';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-permisos-list',
@@ -8,7 +9,11 @@ import { Permiso } from '../../models/permiso';
 })
 export class PermisosListComponent {
   permisos: Array<Permiso>=[];
+  edit:boolean=false;
 
+ permisoFilter:Array<Permiso>= []
+
+ txtFilter:FormControl= new FormControl(null,[Validators.required]);
 
   constructor() {
 

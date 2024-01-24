@@ -1,0 +1,5 @@
+<span *ngIf="hasError(controlName)" class="text-danger">
+  <span *ngIf="getError(controlName,validator) && form.get(controlName)?.touched">
+    {{text}}
+  </span>
+ </span>

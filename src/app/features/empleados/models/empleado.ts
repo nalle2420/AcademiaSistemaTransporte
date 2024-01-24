@@ -1,4 +1,4 @@
-import { BaseEntity } from "../../../sheared/base-entity";
+import { BaseEntity } from "../../../shared/base-entity";
 
 
 export interface Empleado extends BaseEntity{

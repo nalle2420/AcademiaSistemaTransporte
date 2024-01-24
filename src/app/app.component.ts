@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TypeDate,TypeString, TypeNumber } from './classes/index';
 import { IType } from './classes/itype';
 
@@ -7,7 +7,7 @@ import { IType } from './classes/itype';
   templateUrl: './app.component.html',
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit,OnDestroy {
   title = 'AcademiaSistemaTransporte';
 
   constructor() {
@@ -47,6 +47,20 @@ export class AppComponent {
 
 
   }
+
+
+  ngOnInit(): void {
+    console.log("init");
+   setTimeout(() => {
+
+   }, 2500);
+  }
+  ngOnDestroy(): void {
+   console.log("destroy")
+
+  }
+
+
 
 
 
