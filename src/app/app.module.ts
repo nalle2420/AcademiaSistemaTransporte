@@ -9,6 +9,7 @@ import { ReporteListComponent } from './features/reportes/pages/reporte-list/rep
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ContentTypeInterceptor } from './shared/interceptor/content-type.interceptor';
+import { DxButtonModule, DxTextBoxModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ContentTypeInterceptor } from './shared/interceptor/content-type.interc
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+
   ],
   providers: [
     {

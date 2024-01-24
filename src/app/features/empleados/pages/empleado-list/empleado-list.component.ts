@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Empleado } from '../../models/empleado';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmpleadoService } from '../../services/empleado.service';
+import { ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 @Component({
   selector:'app-empleado-list',
   templateUrl: './empleado-list.component.html'
@@ -17,7 +18,13 @@ currentEmpleado: Empleado={empleadoId:0,nombre:'',apellido:'',puestoId:0,activo:
 
  empleadosForm: FormGroup;
 
- constructor( private empleadoService:EmpleadoService) {
+ constructor( private empleadoService:EmpleadoService, private route: ActivatedRoute) {
+  this.route.params.subscribe(console.log);
+
+  console.log(this.route.snapshot.params['empleadoId']);
+  console.log(this.route.snapshot.data);
+
+
 
 
 //this.empleadoFilter=this.empleadoService.getEmpleado();

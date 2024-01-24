@@ -4,6 +4,8 @@ import { EmpleadoListComponent } from './pages/empleado-list/empleado-list.compo
 import { ComponentModule } from '../../shared/components/component.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmpleadoRoutingModule } from './empleado.routing.module';
+import { DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxNumberBoxModule, DxTextBoxModule } from 'devextreme-angular';
+import dxDataGrid from 'devextreme/ui/data_grid';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,11 @@ import { EmpleadoRoutingModule } from './empleado.routing.module';
   imports: [ CommonModule,
      ReactiveFormsModule,
      ComponentModule,
-     EmpleadoRoutingModule ],
+     EmpleadoRoutingModule,
+     DxTextBoxModule,
+    DxButtonModule,
+  DxCheckBoxModule,
+DxNumberBoxModule,DxDataGridModule],
   exports: [
     EmpleadoListComponent
   ],

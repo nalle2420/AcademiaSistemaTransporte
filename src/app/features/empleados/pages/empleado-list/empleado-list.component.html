@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row">
-     <div class="col-3 ">
-      <input [formControl]="txtFilter" type="text" class="form-control me-2" placeholder="nombre a buscar">
-    </div>
 
-      <div class="col-9 text-end">
+
+      <div class="col-12 text-end">
 
       <app-option-control (onClick)="onValueChange($event)" [disabledSave]="empleadosForm.invalid"></app-option-control>
      </div>
@@ -14,14 +12,16 @@
     <div class="col-3">
       <label for="empleadoId">ID</label>
 
-      <input formControlName="empleadoId" type="text" class="form-control" placeholder="id" >
+      <dx-text-box formControlName="empleadoId" type="text" class="form-control" placeholder="id" >
+      </dx-text-box>
 
    <app-error *ngIf="empleadosForm.touched" [form]="empleadosForm" control="empleadoId" validator="required" text="Debe enviar un id" ></app-error>
 
     </div>
     <div class="col-3">
       <label for="nombre">Nombre</label>
-      <input formControlName="nombre" type="text" class="form-control" placeholder="nombre" >
+      <dx-text-box formControlName="nombre" class="form-control" placeholder="nombre" >
+      </dx-text-box>
 
       <app-error *ngIf="empleadosForm.touched" [form]="empleadosForm" control="nombre" validator="required" text="El nombre es requerido" ></app-error>
 
@@ -32,7 +32,8 @@
     </div>
     <div class="col-3">
       <label for="apellido">Apellido</label>
-      <input formControlName="apellido" type="text" class="form-control" placeholder="apellido">
+      <dx-text-box formControlName="apellido" class="form-control" placeholder="apellido">
+      </dx-text-box>
       <app-error *ngIf="empleadosForm.touched" [form]="empleadosForm" control="apellido" validator="required" text="El apellido es requerido" ></app-error>
       <app-error *ngIf="empleadosForm.touched" [form]="empleadosForm" control="apellido" validator="minlength" text="El apellido debe tener {{empleadosForm.get('apellido')?.errors?.['minlength']?.['requiredLength']}} letras." ></app-error>
 
@@ -40,7 +41,8 @@
     </div>
     <div class="col-3">
       <label for="puestoId">Puesto ID</label>
-      <input formControlName="puestoId" type="text" class="form-control" placeholder="idPuesto">
+      <dx-number-box formControlName="puestoId" class="form-control" placeholder="idPuesto">
+      </dx-number-box>
       <app-error *ngIf="empleadosForm.touched" [form]="empleadosForm" control="puestoId" validator="required" text="El puesto id es requerido" ></app-error>
 
 
@@ -50,8 +52,35 @@
 
   <div class="row">
     <div class="col-12"></div>
-    <table class="table">
-      <thead>
+    <dx-data-grid [dataSource]="empleadoFilter" [showBorders]="true" class="table" >
+      <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+  ></dxo-pager>
+  <dxo-search-panel
+    [visible]="true"
+    [highlightCaseSensitive]="true"
+  ></dxo-search-panel>
+     <dxi-column dataField="nombre" caption="Nombre"></dxi-column>
+       <dxi-column dataField="apellido" caption="Apellido"></dxi-column>
+       <dxi-column dataField="empleadoId" caption="EmpleadoId"></dxi-column>
+       <dxi-column dataField="puestoId" caption="puestoId"></dxi-column>
+       <dxi-column cellTemplate="acciones" caption="Acciones"></dxi-column>
+
+       <div *dxTemplate="let empleado of 'acciones'">
+        <dx-button
+        stylingMode="contained"
+        text="Contained"
+        type="default"
+        [width]="120"
+        (click)="onEdit(empleado.data)"
+         >  Editar </dx-button>
+       </div>
+
+
+
+      <!-- <thead>
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Nombre</th>
@@ -71,10 +100,19 @@
             <button type="button" class="btn btn-info" (click)="onEdit(empleado)">
               Editar
             </button>
+            <dx-button
+            stylingMode="contained"
+            text="Contained"
+            type="default"
+            [width]="120"
+            (click)="onEdit(empleado)"
+             >               Editar
+
+          </dx-button>
           </td>
         </tr>
-        </tbody>
-    </table>
+        </tbody> -->
+    </dx-data-grid>
   </div>
 
 </div>

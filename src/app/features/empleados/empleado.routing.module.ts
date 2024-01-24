@@ -6,6 +6,10 @@ const ROUTES:Routes=[
   {
     path:'empleados',
     component:EmpleadoListComponent
+  },
+  {
+    path:'empleados/:empleadoId',
+    component:EmpleadoListComponent
   }
 ];
 
