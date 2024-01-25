@@ -1,32 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Empleado } from '../models/empleado';
 import { TransporteService } from '../../../services/transporte.service';
+import { EmpleadoPorSucursalDto } from '../models/empleado-por-sucursal';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpleadoService {
-  private empleados:Array<Empleado>= [
-    {
-      empleadoId:2,
-     nombre:"Nalle",
-     apellido:"reyes",
-     puestoId:1,
-     activo:true
-  },{empleadoId:3,
- nombre:"Karla",
- apellido:"reyes",
- puestoId:1,
- activo:true}]
+  private empleados:Array<Empleado>= []
 
   constructor(private transporteService: TransporteService) { }
 
   getEmpleados():Promise<Array<Empleado>>{
-    // const promesa= this.transporteService.get<any>('empleado/empleadosTransporte')
-    // .then(data=>{
-    //  return Promise.resolve(data.data);
-    // }).catch(error)
     return this.transporteService.get<Array<Empleado>>('empleado/empleadosTransporte');
+  }
+
+  getEmpleadosPorSucursal(id:number):Promise<Array<EmpleadoPorSucursalDto>>{
+    return this.transporteService.getId<Array<EmpleadoPorSucursalDto>>('empleado/empleadosSucursal',id);
   }
 
   postEmpleados(empleado:Empleado):Promise<string>{

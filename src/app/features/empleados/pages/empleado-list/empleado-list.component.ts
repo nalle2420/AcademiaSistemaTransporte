@@ -25,12 +25,6 @@ currentEmpleado: Empleado={empleadoId:0,nombre:'',apellido:'',puestoId:0,activo:
   console.log(this.route.snapshot.data);
 
 
-
-
-//this.empleadoFilter=this.empleadoService.getEmpleado();
-
- //this.txtFilter.valueChanges.subscribe(x =>this.onFilter(x));
-
  this.empleadosForm = new FormGroup({
   empleadoId:new FormControl(0,[Validators.required]),
   nombre: new FormControl(null,[Validators.required, Validators.minLength(2),Validators.maxLength(20)]),

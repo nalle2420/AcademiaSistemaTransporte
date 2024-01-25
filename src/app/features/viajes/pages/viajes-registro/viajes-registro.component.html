@@ -1,1 +1,25 @@
-<p>viajes-registro works!</p>
+<div class="container">
+<h2 class="mt-3 text-center fw-bolder fs-2 text text-muted">Registro de viajes</h2>
+<div class="row mb-2" [formGroup]="viajesForm">
+  <div class="col-3">
+    <label for="Sucursal">Sucursal
+      <dx-select-box formControlName="sucursalId" [items]="sucursales" displayExpr= "nombre" value="sucursalId" (onValueChanged)="onValueChange($event)">
+
+      </dx-select-box>
+    </label>
+   <app-error *ngIf="viajesForm.touched" [form]="viajesForm" control="sucursalId" validator="required" text="Debe enviar un id" ></app-error>
+
+  </div>
+  <div class="col-3">
+    <label for="Empleado">Empleado
+      <dx-select-box formControlName="empleadoId" [items]="empleados" displayExpr="nombre" valueExpr="EmpleadoId">
+
+      </dx-select-box>
+
+    </label>
+   <app-error *ngIf="viajesForm.touched" [form]="viajesForm" control="empleadoId" validator="required" text="Debe enviar un id" ></app-error>
+
+  </div>
+
+</div>
+

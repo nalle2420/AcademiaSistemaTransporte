@@ -8,7 +8,12 @@ const routes: Routes = [
       {
         path:'',
         loadChildren:()=> import('./features/empleados/empleado.module').then(m=>m.EmpleadoModule)
-      }
+      },
+        {
+          path:'',
+          loadChildren:()=> import('./features/viajes/viaje.module').then(m=>m.ViajeModule)
+        }
+
     ]
   },
   {

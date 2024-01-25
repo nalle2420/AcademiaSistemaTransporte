@@ -20,6 +20,12 @@ export class TransporteService extends BaseService {
     return lastValueFrom(super.get$<T>(endPoint));
   }
 
+  getId<T>(url: string,id:number): Promise<T> {
+    const endPoint: string = `${this.api}/${url}/${id}`;
+
+    return lastValueFrom(super.get$<T>(endPoint));
+  }
+
   post<T>(url: string,body: string): Promise<T> {
     const endPoint: string = `${this.api}/${url}`;
 
