@@ -4,7 +4,7 @@ import { ViajesRegistroComponent } from './pages/viajes-registro/viajes-registro
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentModule } from '../../shared/components/component.module';
 import { ViajeRoutingModule } from './viaje.routing.module';
-import { DxSelectBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxDateBoxModule, DxLookupModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
 
 
 @NgModule({
@@ -13,7 +13,13 @@ import { DxSelectBoxModule } from 'devextreme-angular';
     ReactiveFormsModule,
     ComponentModule,
   ViajeRoutingModule,
-  DxSelectBoxModule
+  DxSelectBoxModule,
+  DxDateBoxModule,
+  DxDataGridModule,
+  DxLookupModule,
+  DxTextBoxModule,
+  DxNumberBoxModule,
+  DxButtonModule,
  ],
   exports: [ViajesRegistroComponent],
   providers: [],

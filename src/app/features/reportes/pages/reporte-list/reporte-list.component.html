@@ -1,1 +1,55 @@
-<p>reporte-list works!</p>
+<div class="container" style="background-color: #e8ecee;">
+  <h2 class="fw-bolder fs-2 bg-secondary p-3 text-center text-white mt-4 mb-4">Reporte de Viajes</h2>
+  <div class="row mb-2 mx-auto border border-light p-4 mt-4 " [formGroup]="reporteForm">
+    <div class="col-4 ">
+      <label class="mb-3" for="Transportista">Transportista </label>
+
+      <dx-lookup formControlName="transportistaId" [dataSource]="transportistas" displayExpr="nombre"
+        valueExpr="transportistaId" [searchEnabled]="true">
+      </dx-lookup>
+      <app-error *ngIf="reporteForm.touched" [form]="reporteForm" control="transportista" validator="required"
+        text="Debe enviar un transportista"></app-error>
+    </div>
+    <div class="col-3 ">
+
+      <label class="mb-3" for="FechaInicial">Fecha Inicial</label>
+
+      <dx-date-box formControlName="fechaInicial" type="date" [value]="now" [inputAttr]="{ 'aria-label': 'Date' }">
+      </dx-date-box>
+      <app-error *ngIf="reporteForm.touched" [form]="reporteForm" control="fechaInicial" validator="required"
+        text="Debe seleccionar una fecha"></app-error>
+    </div>
+
+    <div class="col-3 ">
+
+      <label class="mb-3" for="FechaFinal">Fecha Final</label>
+
+      <dx-date-box formControlName="fechaInicial" type="date" [value]="now" [inputAttr]="{ 'aria-label': 'Date' }">
+      </dx-date-box>
+      <app-error *ngIf="reporteForm.touched" [form]="reporteForm" control="fechaFinal" validator="required"
+        text="Debe seleccionar una fecha"></app-error>
+    </div>
+    <div class="col-2">
+
+      <dx-button class="mx-2 my-4" stylingMode="contained" text="Buscar" type="default" [width]="120" (onClick)="onBuscar()">
+      </dx-button>
+    </div>
+  </div>
+  <div class="row mt-4 ">
+
+    <div class="col-12">
+
+      <dx-data-grid id="grid-container" [dataSource]="datosReporte" [showBorders]="true"
+        [remoteOperations]="true"
+        class="thead-dark">
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+      </dx-data-grid>
+
+    </div>
+
+
+  </div>
+
+
+</div>

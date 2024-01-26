@@ -8,20 +8,20 @@ import { ReporteListComponent } from './features/reportes/pages/reporte-list/rep
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ContentTypeInterceptor } from './shared/interceptor/content-type.interceptor';
+// import { AngularFsIdentityServerModule } from '@farsiman/angular-fs-identity-server';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
     PermisosListComponent,
-    SucursalesAdminComponent,
-    ReporteListComponent,
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
+    AppRoutingModule
+   // AngularFsIdentityServerModule.forRoot(environment.auth_config)
 
   ],
   providers: [

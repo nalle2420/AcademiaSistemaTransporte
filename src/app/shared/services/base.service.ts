@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, map, tap } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Observable, map} from "rxjs";
 
 export abstract class BaseService {
 
@@ -13,9 +13,7 @@ export abstract class BaseService {
 
   protected post$<T>(url:string, body:string):Observable<T> {
 
-
-
-    return this.httpClient.post<T>(url,body).pipe(map((x: any) => x.message));
+    return this.httpClient.post<T>(url,body).pipe(map((x: any) => x));
   }
 
   protected put$<T>(url:string, body:string):Observable<T> {

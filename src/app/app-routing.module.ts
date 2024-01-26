@@ -12,8 +12,15 @@ const routes: Routes = [
         {
           path:'',
           loadChildren:()=> import('./features/viajes/viaje.module').then(m=>m.ViajeModule)
+        },
+        {
+          path:'',
+          loadChildren:()=> import('./features/sucursales/sucursal.module').then(m=>m.SucursalModule)
+        },
+        {
+          path:'',
+          loadChildren:()=> import('./features/reportes/reporte.module').then(m=>m.ReporteModule)
         }
-
     ]
   },
   {

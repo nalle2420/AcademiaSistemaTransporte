@@ -7,19 +7,14 @@ import { FormGroup } from '@angular/forms';
   styles: ``
 })
 export class ErrorComponent {
+  @Input() form!: FormGroup;
+  @Input('control') controlName!: string;
+  @Input() validator!: string;
+  @Input() text!: string;
 
- @Input() form!: FormGroup;
- @Input('control') controlName!: string;
- @Input('validator') validator!: string;
- @Input() text!: string;
+  private getControl = (controlName: string): any => this.form.get(controlName);
 
- private getControl=(controlName:string):any=> this.form.get(controlName);
+  getError = (nameControl: string, validator: string): any => this.getControl(nameControl)?.errors?.[validator];
 
-
-
-  getError(nameControl:string, validator:string):any{
-    return this.getControl(nameControl)?.errors?.[validator]
-   }
-
-   hasError= (nameControl:string): boolean => this.getControl(nameControl)?.errors !=null;
+  hasError = (nameControl: string): boolean => this.getControl(nameControl)?.errors != null;
 }

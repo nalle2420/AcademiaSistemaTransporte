@@ -34,8 +34,6 @@
       </dx-text-box>
       <app-error *ngIf="empleadosForm.touched" [form]="empleadosForm" control="apellido" validator="required" text="El apellido es requerido" ></app-error>
       <app-error *ngIf="empleadosForm.touched" [form]="empleadosForm" control="apellido" validator="minlength" text="El apellido debe tener {{empleadosForm.get('apellido')?.errors?.['minlength']?.['requiredLength']}} letras." ></app-error>
-
-
     </div>
     <div class="col-3">
       <label for="puestoId">Puesto ID</label>

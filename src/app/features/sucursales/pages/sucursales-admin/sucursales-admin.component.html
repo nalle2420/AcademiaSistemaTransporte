@@ -1,1 +1,79 @@
-<p>sucursales-admin works!</p>
+<div class="container" style="background-color: #e8ecee;">
+  <h2 class="fw-bolder fs-2 bg-secondary p-3 text-center text-white mt-4 mb-4">Administración de Sucursales</h2>
+  <div class="row mb-2 " [formGroup]="sucursalesForm">
+    <div class="col-4 mx-auto border border-light p-4 mt-4">
+      <div class="row text-center m-4">
+        <label class="mb-3" for="Empleados">Empleados </label>
+
+        <dx-lookup formControlName="empleadoId" [dataSource]="empleados" displayExpr="Nombre" valueExpr="EmpleadoId"
+          [searchEnabled]="true" (onValueChanged)="onValueChange($event)">
+        </dx-lookup>
+        <app-error *ngIf="sucursalesForm.touched" [form]="sucursalesForm" control="empleadoId" validator="required"
+          text="Debe enviar un empleado"></app-error>
+
+      </div>
+      <div class="row text-center m-4">
+        <label class="mb-3" for="Sucursal">Sucursal</label>
+
+        <dx-lookup formControlName="sucursalId" [dataSource]="sucursales" displayExpr="nombre" valueExpr="sucursalId">
+
+        </dx-lookup>
+
+        <app-error *ngIf="sucursalesForm.touched" [form]="sucursalesForm" control="sucursalId" validator="required"
+          text="Debe enviar una sucursal"></app-error>
+
+      </div>
+
+      <div class=" row text-center m-4">
+        <label for="distancia">Distancia(KM)</label>
+        <dx-number-box formControlName="distanciaKM" class="form-control" placeholder="distancia">
+        </dx-number-box>
+        <app-error *ngIf="sucursalesForm.touched" [form]="sucursalesForm" control="distanciaKM" validator="required"
+          text="La distancia no puede ser 0"></app-error>
+      </div>
+
+      <div class=" row m-4 text">
+        <dx-button class="mx-2"
+        stylingMode="contained"
+        text="Registrar"
+        type="success"
+        [width]="160"
+        (onClick)="onAdd()"
+      > </dx-button>
+      <dx-button
+      stylingMode="contained"
+      text="Cancelar"
+      type="danger"
+      [width]="160"
+      (onClick)="onCancel()"
+    >
+      </dx-button>
+      </div>
+
+    </div>
+
+    <div class="col-1">
+    </div>
+
+    <div class="col-7">
+
+      <div class="row mt-4 ">
+
+        <div class="row">
+          <h4 class="mb-3">Sucursales a las que se encuentra afiliado el empleado</h4>
+
+          <dx-data-grid id="grid-container" [dataSource]="sucursalesVinculadas" [showBorders]="true"
+            [remoteOperations]="true" keyExpr="sucursalId"
+            class="thead-dark">
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+          </dx-data-grid>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
